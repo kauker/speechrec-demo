@@ -121,7 +121,7 @@
         <div class="clearfix"></div> 
             
         <div id="div_language">
-            <select id="select_language"></select>
+            <select id="select_language" onChange="updateLang()"></select>
         </div>
     </div>
 
@@ -237,6 +237,17 @@ function startButton(event) {
   showInfo('info_allow');
   start_timestamp = event.timeStamp;
 }
+
+function updateLang() {
+	start_pause();
+	
+	setTimeout(function() {
+		start_recording(select_language.value)
+		interim_span.innerHTML = '';
+		showInfo('info_allow'); 
+	},300)
+}
+
 function showInfo(s) {
   if (s) {
     for (var child = info.firstChild; child; child = child.nextSibling) {
